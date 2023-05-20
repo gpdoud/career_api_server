@@ -7,7 +7,9 @@ namespace career_api_server.Models {
 
         public DbSet<User> Users { get; set; }
 
-        public CareerDbContext(DbContextOptions<CareerDbContext> options) : base(options) {}
+        public CareerDbContext(DbContextOptions<CareerDbContext> options) : base(options) {
+            //this.Database.Migrate();
+        }
 
         protected override void OnModelCreating(ModelBuilder builder) {
         }
