@@ -49,13 +49,19 @@ namespace career_api_server.Controllers {
             if (_context.Users == null) {
                 return NotFound();
             }
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
 
-            if (user == null || user.Password != password) {
-                return NotFound();
+            User? user = null;
+            try {
+                user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+                if (user == null || user.Password != password) {
+                    return NotFound();
+                }
+                return user;
+            } catch (Exception ex) {
+                var x = 0;
             }
 
-            return user;
+            return NotFound();
         }
 
 
