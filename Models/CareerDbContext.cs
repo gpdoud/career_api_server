@@ -7,6 +7,9 @@ namespace career_api_server.Models {
 
         public DbSet<User> Users { get; set; }
         public DbSet<CompanyMaster> CompanyMasters { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Opportunity> Opportunities { get; set; }
+        public DbSet<CompanyConnection> CompanyConnections { get; set; }
 
         public CareerDbContext(DbContextOptions<CareerDbContext> options) : base(options) {
             //this.Database.Migrate();
