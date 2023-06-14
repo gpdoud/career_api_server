@@ -17,6 +17,29 @@ namespace career_api_server.Controllers {
 
         public UsersController(CareerDbContext context) {
             _context = context;
+            var userTableEmpty = _context.Users.Count() == 0;
+            if(userTableEmpty) { // no users
+                Init();
+            }
+        }
+
+        private void Init() {
+            var greg = new User { Email = "gdoud@maxtrain.com",
+                Password = "sha256-b4e8745eec8d4065da7d4c91ea6e0891a96fcffda83c938ca45b89e31cc333ec",
+                Lastname = "Doud", Firstname = "Greg",
+                Phone = "513-703-7315", Admin = true,
+                Created = DateTime.Now
+            };
+            var annette = new User {
+                Email = "aballard@maxtrain.com",
+                Password = "sha256-bd3023c9f85656458be657c447a5bce9fd970001a8023a9b55dd2281910d1546",
+                Lastname = "Ballard", Firstname = "Annette",
+                Phone = "513-374-0382", Admin = true,
+                Created = DateTime.Now
+            };
+            _context.Users.Add(greg);
+            _context.Users.Add(annette);
+            _context.SaveChanges();
         }
 
         // GET: api/Users
