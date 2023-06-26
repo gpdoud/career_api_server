@@ -75,7 +75,8 @@ namespace career_api_server.Controllers {
 
             User? user = null;
             try {
-                user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+                user = await _context.Users
+                                    .SingleOrDefaultAsync(x => x.Email == email && x.Active);
                 if (user == null || user.Password != password) {
                     return NotFound();
                 }
