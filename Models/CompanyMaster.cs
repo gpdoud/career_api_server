@@ -25,6 +25,8 @@ public class CompanyMaster {
     public string? Phone { get; set; } = null;
     [StringLength(100)]
     public string? Email { get; set; } = null;
+    [StringLength(100)]
+    public string? Website { get; set; } = null;
     [StringLength(50)]
     public string? ContactName { get; set; } = null;
     [StringLength(20)]
