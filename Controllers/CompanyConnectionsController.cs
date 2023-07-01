@@ -15,6 +15,29 @@ namespace career_api_server.Controllers {
 
         public CompanyConnectionsController(CareerDbContext context) {
             _context = context;
+            if(_context.CompanyConnections.Count() == 0) {
+                Init();
+            }
+        }
+
+        private void Init() {
+            string[] connections = {
+                "Targeted Employer",
+                "Published Job Lead",
+                "Online Resume",
+                "Recruiter/Staff",
+                "Referral",
+                "Other"
+            };
+            foreach(var connection in connections) {
+                var compConn = new CompanyConnection {
+                    Connection = connection,
+                    Active = true,
+                    Created = DateTime.Today
+                };
+                _context.CompanyConnections.Add(compConn);
+            }
+            _context.SaveChanges();
         }
 
         // GET: api/CompanyConnections

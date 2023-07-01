@@ -17,8 +17,8 @@ namespace career_api_server.Controllers {
 
         public UsersController(CareerDbContext context) {
             _context = context;
-            var userTableEmpty = _context.Users.Count() == 0;
-            if(userTableEmpty) { // no users
+            // no users
+            if(_context.Users.Count() == 0) { 
                 Init();
             }
         }
