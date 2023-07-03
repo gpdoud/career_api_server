@@ -14,6 +14,8 @@ public class Opportunity {
     public virtual CompanyConnection CompanyConnection { get; set; }
     public string Notes { get; set; }
 
+    public virtual ICollection<Activity> Activities { get; set; }
+
     public bool Active { get; set; } = true;
     public DateTime Created { get; set; } = DateTime.Now;
     public DateTime? Updated { get; set; } = null;

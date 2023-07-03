@@ -40,6 +40,8 @@ namespace career_api_server.Controllers {
                                     .Include(x => x.User)
                                     .Include(x => x.Company)
                                     .Include(x => x.CompanyConnection)
+                                    .Include(x => x.Activities)
+                                        .ThenInclude(x => x.ActivityType)
                                     .Where(x => x.UserId == id)
                                     .ToListAsync();
         }
@@ -55,6 +57,8 @@ namespace career_api_server.Controllers {
                                                 .Include(x => x.User)
                                                 .Include(x => x.Company)
                                                 .Include(x => x.CompanyConnection)
+                                                .Include(x => x.Activities)
+                                                    .ThenInclude(x => x.ActivityType)
                                                 .SingleOrDefaultAsync(x => x.Id == id);
 
             if (opportunity == null) {
