@@ -12,12 +12,16 @@ namespace career_api_server.Models {
         public DbSet<CompanyConnection> CompanyConnections { get; set; }
         public DbSet<ActivityType> ActivityTypes { get; set; }
         public DbSet<Activity> Activities { get; set; }
+        public DbSet<Help> Helps { get; set; }
 
         public CareerDbContext(DbContextOptions<CareerDbContext> options) : base(options) {
             //this.Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder) {
+            builder.Entity<Help>(x => {
+                x.HasKey(p => p.Id);
+            });
         }
     }
 }
