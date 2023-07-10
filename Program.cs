@@ -8,6 +8,8 @@ var connStrKey = "CareerDbContext";
 connStrKey += "Docker";
 #elif RIPPER
 connStrKey += "Ripper";
+#elif DEBUGRELEASE
+connStrKey += "DebugRelease";
 #endif
 
 var builder = WebApplication.CreateBuilder(args);

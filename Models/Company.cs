@@ -28,7 +28,7 @@ public class Company {
     public string? ContactRole { get; set; } = null;
 
     public int UserId { get; set; }
-    public virtual User User { get; set; }
+    public virtual User? User { get; set; }
 
     public bool Active { get; set; } = true;
     public DateTime Created { get; set; } = DateTime.Now;

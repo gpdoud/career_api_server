@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using career_api_server.Models;
+using System.Runtime.CompilerServices;
 
 namespace career_api_server.Controllers {
     [Route("api/[controller]")]
@@ -15,38 +16,6 @@ namespace career_api_server.Controllers {
 
         public ActivityTypesController(CareerDbContext context) {
             _context = context;
-            if(_context.ActivityTypes.Count() == 0) {
-                Init();
-            }
-        }
-
-        private void Init() {
-            string[] types = {
-                "Resume: Submitted",
-                "Resume: Follow-up",
-                "Resume: Employer Response",
-                "Interview: First",
-                "Interview: Second",
-                "Interview: Third",
-                "Interview Follow-up Letter",
-                "Interview: Follow-up Call",
-                "Result: Rejection",
-                "Result: Offer Letter",
-                "Student: Note",
-                "Career Coach: Note",
-                "Instructor: Note"
-            };
-            foreach(var type in types) {
-                var aType = new ActivityType {
-                    Id = 0,
-                    Type = type,
-                    Active = true,
-                    Created = DateTime.Now,
-                    Updated = null
-                };
-                _context.ActivityTypes.Add(aType);
-            }
-            _context.SaveChanges();
         }
 
         // GET: api/ActivityTypes
