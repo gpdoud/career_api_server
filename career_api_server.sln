@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "career_api_server", "career
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{903CD31B-0A39-4F01-9579-DE4BBC9A925F}"
 	ProjectSection(SolutionItems) = preProject
-		Sql\CompanyMasterLoad.sql = Sql\CompanyMasterLoad.sql
+		CareerDbLoad.sql = CareerDbLoad.sql
 	EndProjectSection
 EndProject
 Global

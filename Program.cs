@@ -19,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<CareerDbContext>(
-    x => x.UseSqlServer(builder.Configuration.GetConnectionString("CareerDbContextDocker"))
+    x => x.UseSqlServer(builder.Configuration.GetConnectionString(connStrKey))
 );
 
 builder.Services.AddCors();
