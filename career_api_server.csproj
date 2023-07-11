@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Configurations>Debug;Release;Docker;Ripper;DebugRelease</Configurations>
+    <Configurations>Debug;DebugRelease;Release;Docker;Ripper</Configurations>
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
