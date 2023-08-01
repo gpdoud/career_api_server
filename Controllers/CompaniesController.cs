@@ -93,6 +93,18 @@ namespace career_api_server.Controllers {
             return CreatedAtAction("GetCompany", new { id = company.Id }, company);
         }
 
+        // POST: api/Companies/assign
+        [HttpPost("assign/{userId}")]
+        public async Task<ActionResult<Company>> AssignCompany(int userId, CompanyMaster cm) {
+            if (_context.Companies == null) {
+                return Problem("Entity set 'CareerDbContext.Companies'  is null.");
+            }
+            var company = Company.CreateInstance(cm);
+            company.Id = 0;
+            company.UserId = userId;
+            return await PostCompany(company);
+        }
+
         // DELETE: api/Companies/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany(int id) {
