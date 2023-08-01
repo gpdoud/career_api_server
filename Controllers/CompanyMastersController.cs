@@ -77,6 +77,14 @@ namespace career_api_server.Controllers {
             return CreatedAtAction("GetCompanyMaster", new { id = companyMaster.Id }, companyMaster);
         }
 
+        // POST: api/CompanyMasters/Company
+        [HttpPost("company")]
+        public async Task<ActionResult<CompanyMaster>> AddCompanyToCompanyMaster(Company company) {
+            // copy the company into a new company master
+            var companyMaster = CompanyMaster.CreateInstance(company);
+            return await PostCompanyMaster(companyMaster);
+        }
+
         // DELETE: api/CompanyMasters/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompanyMaster(int id) {
