@@ -43,4 +43,27 @@ public class CompanyMaster {
     public DateTime Created { get; set; } = DateTime.Now;
     public DateTime? Updated { get; set; } = null;
 
+    public static CompanyMaster CreateInstance(Company c) {
+        var cm = new CompanyMaster {
+            Id = 0,
+            Code = Random.Shared.Next(1000000000, int.MaxValue).ToString(),
+            Name = c.Name,
+            Address = c.Address,
+            City = c.City,
+            StateCode = c.StateCode,
+            Zip = c.Zip,
+            Phone = c.Phone,
+            Email = c.Email,
+            Website = c.Website,
+            ContactName = c.ContactName,
+            ContactPhone = c.ContactPhone,
+            ContactRole = c.ContactRole,
+
+            Active = c.Active
+        };
+
+
+        return cm;
+    }
+
 }
