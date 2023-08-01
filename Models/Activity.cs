@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿#nullable enable
+using System.Text.Json.Serialization;
 
 namespace career_api_server.Models;
 
@@ -6,9 +7,9 @@ public class Activity {
     public int Id { get; set; }
     public int OpportunityId { get; set; }
     [JsonIgnore]
-    public virtual Opportunity Opportunity { get; set; }
+    public virtual Opportunity? Opportunity { get; set; }
     public int ActivityTypeId { get; set; }
-    public virtual ActivityType ActivityType { get; set; }
+    public virtual ActivityType? ActivityType { get; set; }
     public DateTime Date { get; set; }
     public string Notes { get; set; }
 
@@ -16,3 +17,4 @@ public class Activity {
     public DateTime Created { get; set; } = DateTime.Now;
     public DateTime? Updated { get; set; } = null;
 }
+
