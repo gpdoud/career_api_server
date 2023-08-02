@@ -51,6 +51,15 @@ namespace career_api_server.Controllers {
             return await _context.Users.ToListAsync();
         }
 
+        // GET: api/Users/Students
+        [HttpGet("students")]
+        public async Task<ActionResult<IEnumerable<User>>> GetStudents() {
+            if (_context.Users == null) {
+                return NotFound();
+            }
+            return await _context.Users.Where(x => !x.Admin && x.Active).ToListAsync();
+        }
+
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id) {

@@ -94,12 +94,16 @@ namespace career_api_server.Controllers {
         }
 
         // POST: api/Companies/assign
-        [HttpPost("assign/{userId}")]
-        public async Task<ActionResult<Company>> AssignCompany(int userId, CompanyMaster cm) {
+        [HttpPost("assign/{userId}/{cmId}")]
+        public async Task<ActionResult<Company>> AssignCompany(int userId, int cmId) {
             if (_context.Companies == null) {
                 return Problem("Entity set 'CareerDbContext.Companies'  is null.");
             }
-            var company = Company.CreateInstance(cm);
+            var companyMaster = await _context.CompanyMasters.FindAsync(cmId);
+            if (companyMaster == null) {
+                return Problem("CompanyMaster id is not found!");
+            }
+            var company = Company.CreateInstance(companyMaster);
             company.Id = 0;
             company.UserId = userId;
             return await PostCompany(company);
