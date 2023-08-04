@@ -33,4 +33,26 @@ public class Company {
     public bool Active { get; set; } = true;
     public DateTime Created { get; set; } = DateTime.Now;
     public DateTime? Updated { get; set; } = null;
+
+    public static Company CreateInstance(CompanyMaster cm) {
+        var c = new Company {
+            Id = 0,
+            Name = cm.Name,
+            Address = cm.Address,
+            City = cm.City,
+            StateCode = cm.StateCode,
+            Zip = cm.Zip,
+            Phone = cm.Phone,
+            Email = cm.Email,
+            Website = cm.Website,
+            ContactName = cm.ContactName,
+            ContactPhone = cm.ContactPhone,
+            ContactRole = cm.ContactRole,
+
+            Active = cm.Active
+        };
+
+
+        return c;
+    }
 }
